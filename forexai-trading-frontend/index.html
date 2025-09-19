@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForexAI Trading Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .status-premium {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #000;
+        }
+
+        .status-free {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .balance-card {
+            text-align: center;
+        }
+
+        .balance-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-active {
+            background: #00ff88;
+        }
+
+        .status-inactive {
+            background: #ff6b6b;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .controls-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #b0bec5;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #ff6b6b, #cc5555);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .trading-pairs {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            grid-column: span 3;
+        }
+
+        .pairs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pair-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pair-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.02);
+        }
+
+        .pair-card.active {
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+        }
+
+        .pair-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .pair-price {
+            color: #00ff88;
+            font-size: 1rem;
+        }
+
+        .logs-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            grid-column: span 3;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .log-time {
+            color: #b0bec5;
+            font-size: 0.9rem;
+        }
+
+        .log-message {
+            flex: 1;
+            margin: 0 1rem;
+        }
+
+        .log-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .log-buy {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .log-sell {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .log-info {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(26, 35, 50, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        .ai-settings {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ForexAI Trading</div>
+        <div class="user-info">
+            <div class="user-status status-premium" id="userStatus">Premium Active</div>
+            <span id="userName">João Silva</span>
+            <button class="btn btn-danger" onclick="logout()">Sair</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Dashboard Overview -->
+        <div class="dashboard">
+            <div class="card balance-card">
+                <h3 class="card-title">Saldo Atual</h3>
+                <div class="balance-value" id="currentBalance">$2,450.75</div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Controle de Trading</h3>
+                <div class="ai-status">
+                    <div class="status-indicator status-active" id="aiIndicator"></div>
+                    <span id="aiStatus">IA Ativa - Analisando Mercado</span>
+                </div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                    <button class="btn btn-success" id="startTrading" onclick="startTrading()">Iniciar Trading</button>
+                    <button class="btn btn-danger" id="stopTrading" onclick="stopTrading()" disabled>Parar Trading</button>
+                </div>
+                <button class="btn btn-primary" id="aiToggle" onclick="toggleAI()" style="width: 100%; margin-top: 0.5rem;">Pausar IA</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Trades Hoje</h3>
+                <p>Executados: <span id="tradesExecuted">12</span></p>
+                <p>Lucrativos: <span id="profitableTrades" style="color: #00ff88;">8</span></p>
+                <p>Perdas: <span id="lossTrades" style="color: #ff6b6b;">4</span></p>
+            </div>
+        </div>
+
+        <!-- Chart and Trading Overview -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <div class="card" style="padding: 1rem;">
+                <h3 class="card-title">Gráfico de Velas - EUR/USD</h3>
+                <div style="position: relative; height: 400px; background: rgba(0, 0, 0, 0.2); border-radius: 10px; overflow: hidden;">
+                    <canvas id="candlestickChart" width="100%" height="400"></canvas>
+                    <div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 0.5rem;">
+                        <span style="display: flex; align-items: center; gap: 0.3rem; font-size: 0.8rem;">
+                            <div style="width: 10px; height: 10px; background: #00ff88; border-radius: 50%;"></div>
+                            Entrada Buy
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.3rem; font-size: 0.8rem;">
+                            <div style="width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%;"></div>
+                            Entrada Sell
+                        </span>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #b0bec5;">Último: </span>
+                        <span id="lastPrice" style="color: #00ff88; font-weight: bold;">1.0850</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn" style="padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.1);" onclick="changeTimeframe('1M')">1M</button>
+                        <button class="btn" style="padding: 0.3rem 0.8rem; background: rgba(0,212,255,0.3);" onclick="changeTimeframe('5M')">5M</button>
+                        <button class="btn" style="padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.1);" onclick="changeTimeframe('15M')">15M</button>
+                        <button class="btn" style="padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.1);" onclick="changeTimeframe('1H')">1H</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Posições Ativas</h3>
+                <div id="activePositions" style="max-height: 350px; overflow-y: auto;">
+                    <div class="position-item" style="background: rgba(0,255,136,0.1); border-left: 3px solid #00ff88; padding: 1rem; margin-bottom: 1rem; border-radius: 5px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong>EUR/USD</strong>
+                            <span style="color: #00ff88;">BUY</span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: #b0bec5;">
+                            <p>Entrada: 1.0845</p>
+                            <p>Atual: 1.0850</p>
+                            <p>P&L: +$1.25</p>
+                        </div>
+                    </div>
+                    
+                    <div class="position-item" style="background: rgba(255,107,107,0.1); border-left: 3px solid #ff6b6b; padding: 1rem; margin-bottom: 1rem; border-radius: 5px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong>GBP/USD</strong>
+                            <span style="color: #ff6b6b;">SELL</span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: #b0bec5;">
+                            <p>Entrada: 1.2740</p>
+                            <p>Atual: 1.2735</p>
+                            <p>P&L: +$0.85</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls-panel">
+            <div class="card">
+                <h3 class="card-title">Configurações de Trade</h3>
+                <div class="form-group">
+                    <label class="form-label">Valor da Entrada ($)</label>
+                    <input type="number" class="form-input" id="entryAmount" value="25.00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Stop Loss (%)</label>
+                    <input type="number" class="form-input" id="stopLoss" value="2.5" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Take Profit (%)</label>
+                    <input type="number" class="form-input" id="takeProfit" value="3.0" step="0.1">
+                </div>
+                <button class="btn btn-primary" onclick="updateSettings()">Atualizar Configurações</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Configurações da IA</h3>
+                <div class="form-group">
+                    <label class="form-label">Corretora</label>
+                    <select class="form-select" id="broker">
+                        <option value="deriv">Deriv</option>
+                        <option value="iqoption">IQ Option</option>
+                        <option value="quotex">Quotex</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Agressividade da IA</label>
+                    <select class="form-select" id="aiAggressiveness">
+                        <option value="conservative">Conservadora</option>
+                        <option value="moderate" selected>Moderada</option>
+                        <option value="aggressive">Agressiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Martingale</label>
+                    <select class="form-select" id="martingale">
+                        <option value="auto">Automático (IA decide)</option>
+                        <option value="disabled">Desabilitado</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="openAISettings()">Configurações Avançadas</button>
+            </div>
+        </div>
+
+        <!-- Trading Pairs -->
+        <div class="trading-pairs">
+            <h3 class="card-title">Pares de Moedas Ativos</h3>
+            <div class="pairs-grid" id="pairsGrid">
+                <!-- Pairs will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Logs Panel -->
+        <div class="logs-panel">
+            <h3 class="card-title">Log de Atividades</h3>
+            <div id="logsContainer">
+                <!-- Logs will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Settings Modal -->
+    <div id="aiSettingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAISettings()">&times;</span>
+            <h2>Configurações Avançadas da IA</h2>
+            <div class="ai-settings">
+                <div class="form-group">
+                    <label class="form-label">RSI Threshold</label>
+                    <input type="number" class="form-input" id="rsiThreshold" value="70">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">MACD Sensitivity</label>
+                    <input type="number" class="form-input" id="macdSensitivity" value="0.5" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Support/Resistance</label>
+                    <select class="form-select" id="supportResistance">
+                        <option value="high">Alta Precisão</option>
+                        <option value="medium" selected>Média Precisão</option>
+                        <option value="low">Baixa Precisão</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">News Impact</label>
+                    <select class="form-select" id="newsImpact">
+                        <option value="high" selected>Alto Impacto</option>
+                        <option value="medium">Médio Impacto</option>
+                        <option value="low">Baixo Impacto</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-success" onclick="saveAISettings()">Salvar Configurações</button>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let aiActive = true;
+        let tradingActive = false;
+        let currentUser = {
+            name: 'João Silva',
+            status: 'premium',
+            balance: 2450.75
+        };
+
+        // Chart variables
+        let chart;
+        let candleData = [];
+        let tradeMarkers = [];
+
+        // Generate initial candle data
+        function generateCandleData() {
+            const data = [];
+            let price = 1.0850;
+            const now = Date.now();
+            
+            for (let i = 299; i >= 0; i--) {
+                const timestamp = now - (i * 5 * 60 * 1000); // 5-minute candles
+                const open = price + (Math.random() - 0.5) * 0.0020;
+                const high = open + Math.random() * 0.0015;
+                const low = open - Math.random() * 0.0015;
+                const close = low + Math.random() * (high - low);
+                
+                data.push({
+                    timestamp,
+                    open: parseFloat(open.toFixed(4)),
+                    high: parseFloat(high.toFixed(4)),
+                    low: parseFloat(low.toFixed(4)),
+                    close: parseFloat(close.toFixed(4))
+                });
+                
+                price = close;
+            }
+            
+            return data;
+        }
+
+        // Draw candlestick chart
+        function drawChart() {
+            const canvas = document.getElementById('candlestickChart');
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            
+            // Set canvas size
+            canvas.width = rect.width * 2;
+            canvas.height = rect.height * 2;
+            ctx.scale(2, 2);
+            
+            const width = rect.width;
+            const height = rect.height;
+            const padding = 40;
+            
+            // Clear canvas
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, width, height);
+            
+            if (candleData.length === 0) return;
+            
+            // Find price range
+            const prices = candleData.flatMap(d => [d.high, d.low]);
+            const minPrice = Math.min(...prices);
+            const maxPrice = Math.max(...prices);
+            const priceRange = maxPrice - minPrice;
+            
+            const chartWidth = width - padding * 2;
+            const chartHeight = height - padding * 2;
+            const candleWidth = chartWidth / candleData.length * 0.8;
+            
+            // Draw grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 5; i++) {
+                const y = padding + (chartHeight / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(width - padding, y);
+                ctx.stroke();
+            }
+            
+            // Draw candles
+            candleData.forEach((candle, index) => {
+                const x = padding + (index * chartWidth / candleData.length);
+                const openY = padding + ((maxPrice - candle.open) / priceRange) * chartHeight;
+                const closeY = padding + ((maxPrice - candle.close) / priceRange) * chartHeight;
+                const highY = padding + ((maxPrice - candle.high) / priceRange) * chartHeight;
+                const lowY = padding + ((maxPrice - candle.low) / priceRange) * chartHeight;
+                
+                const isGreen = candle.close > candle.open;
+                
+                // Draw wick
+                ctx.strokeStyle = isGreen ? '#00ff88' : '#ff6b6b';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x, highY);
+                ctx.lineTo(x, lowY);
+                ctx.stroke();
+                
+                // Draw body
+                ctx.fillStyle = isGreen ? '#00ff88' : '#ff6b6b';
+                const bodyHeight = Math.abs(closeY - openY);
+                const bodyY = Math.min(openY, closeY);
+                ctx.fillRect(x - candleWidth/2, bodyY, candleWidth, Math.max(bodyHeight, 1));
+            });
+            
+            // Draw trade markers
+            tradeMarkers.forEach(marker => {
+                const candle = candleData[marker.candleIndex];
+                if (!candle) return;
+                
+                const x = padding + (marker.candleIndex * chartWidth / candleData.length);
+                const y = padding + ((maxPrice - marker.price) / priceRange) * chartHeight;
+                
+                ctx.fillStyle = marker.type === 'buy' ? '#00ff88' : '#ff6b6b';
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Draw arrow
+                ctx.fillStyle = marker.type === 'buy' ? '#00ff88' : '#ff6b6b';
+                ctx.beginPath();
+                if (marker.type === 'buy') {
+                    ctx.moveTo(x, y - 8);
+                    ctx.lineTo(x - 4, y - 12);
+                    ctx.lineTo(x + 4, y - 12);
+                } else {
+                    ctx.moveTo(x, y + 8);
+                    ctx.lineTo(x - 4, y + 12);
+                    ctx.lineTo(x + 4, y + 12);
+                }
+                ctx.fill();
+            });
+            
+            // Update last price
+            const lastCandle = candleData[candleData.length - 1];
+            if (lastCandle) {
+                document.getElementById('lastPrice').textContent = lastCandle.close.toFixed(4);
+            }
+        }
+
+        // Add trade marker
+        function addTradeMarker(type, price) {
+            const marker = {
+                type: type,
+                price: price,
+                candleIndex: candleData.length - 1,
+                timestamp: Date.now()
+            };
+            tradeMarkers.push(marker);
+            drawChart();
+        }
+
+        // Change timeframe
+        function changeTimeframe(tf) {
+            document.querySelectorAll('button').forEach(btn => {
+                if (btn.textContent === tf) {
+                    btn.style.background = 'rgba(0,212,255,0.3)';
+                } else if (['1M', '5M', '15M', '1H'].includes(btn.textContent)) {
+                    btn.style.background = 'rgba(255,255,255,0.1)';
+                }
+            });
+            addLog(`Timeframe alterado para ${tf}`, 'info');
+        }
+
+        // Start trading
+        function startTrading() {
+            tradingActive = true;
+            document.getElementById('startTrading').disabled = true;
+            document.getElementById('stopTrading').disabled = false;
+            document.getElementById('startTrading').textContent = 'Trading Ativo';
+            document.getElementById('startTrading').className = 'btn btn-success';
+            addLog('Trading iniciado pelo usuário', 'info');
+        }
+
+        // Stop trading  
+        function stopTrading() {
+            tradingActive = false;
+            document.getElementById('startTrading').disabled = false;
+            document.getElementById('stopTrading').disabled = true;
+            document.getElementById('startTrading').textContent = 'Iniciar Trading';
+            document.getElementById('startTrading').className = 'btn btn-success';
+            addLog('Trading pausado pelo usuário', 'info');
+        }
+
+        // Trading pairs data
+        const tradingPairs = [
+            { name: 'EUR/USD', price: '1.0850', change: '+0.15%' },
+            { name: 'GBP/USD', price: '1.2735', change: '-0.08%' },
+            { name: 'USD/JPY', price: '148.25', change: '+0.32%' },
+            { name: 'AUD/USD', price: '0.6680', change: '+0.22%' },
+            { name: 'USD/CAD', price: '1.3425', change: '-0.05%' },
+            { name: 'EUR/GBP', price: '0.8520', change: '+0.18%' }
+        ];
+
+        // Initialize the application
+        function init() {
+            populateTradingPairs();
+            populateLogs();
+            updateBalance();
+            candleData = generateCandleData();
+            drawChart();
+            startPriceUpdates();
+            startLogUpdates();
+            
+            // Resize chart on window resize
+            window.addEventListener('resize', drawChart);
+        }
+
+        // Populate trading pairs
+        function populateTradingPairs() {
+            const container = document.getElementById('pairsGrid');
+            container.innerHTML = '';
+            
+            tradingPairs.forEach((pair, index) => {
+                const pairElement = document.createElement('div');
+                pairElement.className = 'pair-card';
+                if (index === 0) pairElement.classList.add('active');
+                
+                pairElement.innerHTML = `
+                    <div class="pair-name">${pair.name}</div>
+                    <div class="pair-price">${pair.price}</div>
+                    <div style="font-size: 0.8rem; margin-top: 0.5rem;">${pair.change}</div>
+                `;
+                
+                pairElement.onclick = () => selectPair(pairElement, pair);
+                container.appendChild(pairElement);
+            });
+        }
+
+        // Select trading pair
+        function selectPair(element, pair) {
+            document.querySelectorAll('.pair-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            element.classList.add('active');
+            addLog(`Par selecionado: ${pair.name}`, 'info');
+        }
+
+        // Populate initial logs
+        function populateLogs() {
+            const logs = [
+                { time: '14:32:15', message: 'IA iniciada com sucesso', status: 'info' },
+                { time: '14:33:42', message: 'Análise de EUR/USD concluída', status: 'info' },
+                { time: '14:35:18', message: 'Entrada BUY em EUR/USD - $25.00', status: 'buy' },
+                { time: '14:37:55', message: 'Take Profit atingido - Lucro: $1.85', status: 'sell' },
+                { time: '14:40:12', message: 'Nova oportunidade detectada em GBP/USD', status: 'info' }
+            ];
+
+            const container = document.getElementById('logsContainer');
+            container.innerHTML = '';
+            
+            logs.forEach(log => {
+                addLogToContainer(log.time, log.message, log.status);
+            });
+        }
+
+        // Add log entry
+        function addLog(message, status) {
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+            addLogToContainer(time, message, status);
+        }
+
+        // Add log to container
+        function addLogToContainer(time, message, status) {
+            const container = document.getElementById('logsContainer');
+            const logElement = document.createElement('div');
+            logElement.className = 'log-entry';
+            
+            logElement.innerHTML = `
+                <span class="log-time">${time}</span>
+                <span class="log-message">${message}</span>
+                <span class="log-status log-${status}">${status.toUpperCase()}</span>
+            `;
+            
+            container.insertBefore(logElement, container.firstChild);
+            
+            // Keep only last 20 logs
+            if (container.children.length > 20) {
+                container.removeChild(container.lastChild);
+            }
+        }
+
+        // Toggle AI
+        function toggleAI() {
+            aiActive = !aiActive;
+            const button = document.getElementById('aiToggle');
+            const status = document.getElementById('aiStatus');
+            const indicator = document.getElementById('aiIndicator');
+            
+            if (aiActive) {
+                button.textContent = 'Pausar IA';
+                button.className = 'btn btn-success';
+                status.textContent = 'IA Ativa - Analisando Mercado';
+                indicator.className = 'status-indicator status-active';
+                addLog('IA reativada pelo usuário', 'info');
+            } else {
+                button.textContent = 'Ativar IA';
+                button.className = 'btn btn-danger';
+                status.textContent = 'IA Pausada';
+                indicator.className = 'status-indicator status-inactive';
+                addLog('IA pausada pelo usuário', 'info');
+            }
+        }
+
+        // Update settings
+        function updateSettings() {
+            const entry = document.getElementById('entryAmount').value;
+            const stopLoss = document.getElementById('stopLoss').value;
+            const takeProfit = document.getElementById('takeProfit').value;
+            
+            addLog(`Configurações atualizadas - Entrada: $${entry}, SL: ${stopLoss}%, TP: ${takeProfit}%`, 'info');
+        }
+
+        // Open AI settings modal
+        function openAISettings() {
+            document.getElementById('aiSettingsModal').style.display = 'block';
+        }
+
+        // Close AI settings modal
+        function closeAISettings() {
+            document.getElementById('aiSettingsModal').style.display = 'none';
+        }
+
+        // Save AI settings
+        function saveAISettings() {
+            addLog('Configurações avançadas da IA salvas', 'info');
+            closeAISettings();
+        }
+
+        // Update balance
+        function updateBalance() {
+            document.getElementById('currentBalance').textContent = `$${currentUser.balance.toFixed(2)}`;
+        }
+
+        // Start price updates simulation
+        function startPriceUpdates() {
+            setInterval(() => {
+                if (aiActive) {
+                    // Update candle data
+                    const lastCandle = candleData[candleData.length - 1];
+                    const newPrice = lastCandle.close + (Math.random() - 0.5) * 0.0020;
+                    
+                    // Add new candle every 5 seconds (simulating 5min candles)
+                    if (candleData.length > 299) {
+                        candleData.shift(); // Remove oldest candle
+                    }
+                    
+                    const newCandle = {
+                        timestamp: Date.now(),
+                        open: lastCandle.close,
+                        high: Math.max(lastCandle.close, newPrice) + Math.random() * 0.0005,
+                        low: Math.min(lastCandle.close, newPrice) - Math.random() * 0.0005,
+                        close: parseFloat(newPrice.toFixed(4))
+                    };
+                    
+                    candleData.push(newCandle);
+                    drawChart();
+                    
+                    // Update trading pairs
+                    tradingPairs.forEach(pair => {
+                        const change = (Math.random() - 0.5) * 0.001;
+                        const newPrice = parseFloat(pair.price) + change;
+                        pair.price = newPrice.toFixed(4);
+                        
+                        const changePercent = ((Math.random() - 0.5) * 0.5).toFixed(2);
+                        pair.change = changePercent >= 0 ? `+${changePercent}%` : `${changePercent}%`;
+                    });
+                    
+                    populateTradingPairs();
+                }
+            }, 5000);
+        }
+
+        // Start log updates simulation
+        function startLogUpdates() {
+            const messages = [
+                'Análise técnica completa',
+                'Detectada divergência no RSI',
+                'Suporte/Resistência identificado',
+                'Notícias econômicas analisadas',
+                'Padrão de velas identificado',
+                'Volume anormal detectado'
+            ];
+            
+            setInterval(() => {
+                if (aiActive && Math.random() > 0.7) {
+                    const message = messages[Math.floor(Math.random() * messages.length)];
+                    addLog(message, 'info');
+                }
+                
+                if (aiActive && tradingActive && Math.random() > 0.85) {
+                    const pairs = ['EUR/USD', 'GBP/USD', 'USD/JPY'];
+                    const pair = pairs[Math.floor(Math.random() * pairs.length)];
+                    const action = Math.random() > 0.5 ? 'BUY' : 'SELL';
+                    const amount = (Math.random() * 50 + 10).toFixed(2);
+                    
+                    // Add trade marker to chart if it's EUR/USD
+                    if (pair === 'EUR/USD') {
+                        const lastCandle = candleData[candleData.length - 1];
+                        addTradeMarker(action.toLowerCase(), lastCandle.close);
+                    }
+                    
+                    addLog(`Entrada ${action} em ${pair} - ${amount}`, action.toLowerCase() === 'buy' ? 'buy' : 'sell');
+                    
+                    // Simulate balance change
+                    const profit = (Math.random() - 0.3) * 5;
+                    currentUser.balance += profit;
+                    updateBalance();
+                }
+            }, 10000);
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Deseja realmente sair da plataforma?')) {
+                addLog('Usuário desconectado', 'info');
+                // Here you would redirect to login page
+                alert('Logout realizado com sucesso!');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('aiSettingsModal');
+            if (event.target === modal) {
+                closeAISettings();
+            }
+        }
+
+        // Initialize when page loads
+        window.onload = init;
+    </script>
+</body>
+</html>

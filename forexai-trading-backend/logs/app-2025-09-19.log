@@ -1,0 +1,157 @@
+{"timestamp":"2025-09-19T21:28:20.318Z","level":"INFO","message":"✅ Rotas de auth carregadas"}
+{"timestamp":"2025-09-19T21:28:20.326Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T21:28:20.371Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T21:28:20.372Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T21:28:20.377Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T21:28:20.379Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T21:28:20.380Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T21:28:20.380Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T21:28:20.381Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T21:28:30.405Z","level":"INFO","message":"GET /api/v1 - ::1"}
+{"timestamp":"2025-09-19T21:28:30.512Z","level":"INFO","message":"GET /favicon.ico - ::1"}
+{"timestamp":"2025-09-19T21:28:40.731Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-09-19T21:28:52.950Z","level":"INFO","message":"GET /api/v1/test - ::1"}
+{"timestamp":"2025-09-19T21:44:18.094Z","level":"INFO","message":"🔄 Iniciando desligamento gracioso..."}
+{"timestamp":"2025-09-19T21:44:18.114Z","level":"INFO","message":"🔌 Pool de conexões MySQL encerrado"}
+{"timestamp":"2025-09-19T21:44:18.115Z","level":"INFO","message":"🔌 Conexão com banco encerrada"}
+{"timestamp":"2025-09-19T21:44:18.116Z","level":"INFO","message":"📡 Servidor HTTP fechado"}
+{"timestamp":"2025-09-19T21:44:23.814Z","level":"INFO","message":"✅ Rotas de autenticação carregadas"}
+{"timestamp":"2025-09-19T21:44:23.820Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T21:44:23.825Z","level":"INFO","message":"✅ Rotas de trading carregadas"}
+{"timestamp":"2025-09-19T21:44:23.833Z","level":"INFO","message":"✅ Rotas de IA carregadas"}
+{"timestamp":"2025-09-19T21:44:23.898Z","level":"INFO","message":"✅ Rotas de assinaturas carregadas"}
+{"timestamp":"2025-09-19T21:44:23.899Z","level":"INFO","message":"🔄 Tentando conectar ao banco de dados..."}
+{"timestamp":"2025-09-19T21:44:23.940Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T21:44:23.941Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T21:44:23.941Z","level":"INFO","message":"🔄 Executando migrações..."}
+{"timestamp":"2025-09-19T21:44:23.973Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:44:23.974Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:44:23.977Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T21:44:23.977Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T21:44:23.978Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T21:44:23.978Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T21:44:23.979Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T21:44:23.979Z","level":"INFO","message":"📋 Endpoints disponíveis:"}
+{"timestamp":"2025-09-19T21:44:23.980Z","level":"INFO","message":"   GET  /health"}
+{"timestamp":"2025-09-19T21:44:23.980Z","level":"INFO","message":"   GET  /api/v1/test"}
+{"timestamp":"2025-09-19T21:44:23.980Z","level":"INFO","message":"   POST /api/v1/auth/register"}
+{"timestamp":"2025-09-19T21:44:23.981Z","level":"INFO","message":"   POST /api/v1/auth/login"}
+{"timestamp":"2025-09-19T21:44:23.981Z","level":"INFO","message":"   GET  /api/v1/trading/symbols"}
+{"timestamp":"2025-09-19T21:44:23.982Z","level":"INFO","message":"   GET  /api/v1/ai/status"}
+{"timestamp":"2025-09-19T21:44:23.983Z","level":"INFO","message":"   GET  /api/v1/subscriptions/plans"}
+{"timestamp":"2025-09-19T21:45:28.204Z","level":"INFO","message":"POST /api/v1/auth/login - ::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T21:45:28.707Z","level":"INFO","message":"Login realizado com sucesso","userId":1,"email":"admin@forexai.com","ip":"::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T21:46:05.487Z","level":"INFO","message":"POST /api/v1/auth/register - ::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T21:46:05.973Z","level":"INFO","message":"Novo usuário registrado","userId":3,"email":"joao@teste.com","ip":"::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T21:46:24.987Z","level":"INFO","message":"GET /api/v1/users/profile - ::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T21:54:07.889Z","level":"INFO","message":"✅ Rotas de autenticação carregadas"}
+{"timestamp":"2025-09-19T21:54:07.898Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T21:54:07.902Z","level":"INFO","message":"✅ Rotas de trading carregadas"}
+{"timestamp":"2025-09-19T21:54:07.911Z","level":"INFO","message":"✅ Rotas de IA carregadas"}
+{"timestamp":"2025-09-19T21:54:08.014Z","level":"INFO","message":"✅ Rotas de assinaturas carregadas"}
+{"timestamp":"2025-09-19T21:54:08.015Z","level":"INFO","message":"🔄 Tentando conectar ao banco de dados..."}
+{"timestamp":"2025-09-19T21:54:08.061Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T21:54:08.062Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T21:54:08.063Z","level":"INFO","message":"🔄 Executando migrações..."}
+{"timestamp":"2025-09-19T21:54:08.084Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:54:08.085Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:54:08.088Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T21:54:08.089Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T21:54:08.089Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T21:54:08.090Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T21:54:08.090Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T21:54:08.091Z","level":"INFO","message":"📋 Endpoints disponíveis:"}
+{"timestamp":"2025-09-19T21:54:08.091Z","level":"INFO","message":"   GET  /health"}
+{"timestamp":"2025-09-19T21:54:08.091Z","level":"INFO","message":"   GET  /api/v1/test"}
+{"timestamp":"2025-09-19T21:54:08.092Z","level":"INFO","message":"   POST /api/v1/auth/register"}
+{"timestamp":"2025-09-19T21:54:08.092Z","level":"INFO","message":"   POST /api/v1/auth/login"}
+{"timestamp":"2025-09-19T21:54:08.093Z","level":"INFO","message":"   GET  /api/v1/trading/symbols"}
+{"timestamp":"2025-09-19T21:54:08.094Z","level":"INFO","message":"   GET  /api/v1/ai/status"}
+{"timestamp":"2025-09-19T21:54:08.094Z","level":"INFO","message":"   GET  /api/v1/subscriptions/plans"}
+{"timestamp":"2025-09-19T21:54:18.764Z","level":"INFO","message":"✅ Rotas de autenticação carregadas"}
+{"timestamp":"2025-09-19T21:54:18.771Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T21:54:18.775Z","level":"INFO","message":"✅ Rotas de trading carregadas"}
+{"timestamp":"2025-09-19T21:54:18.781Z","level":"INFO","message":"✅ Rotas de IA carregadas"}
+{"timestamp":"2025-09-19T21:54:18.842Z","level":"INFO","message":"✅ Rotas de assinaturas carregadas"}
+{"timestamp":"2025-09-19T21:54:18.843Z","level":"INFO","message":"🔄 Tentando conectar ao banco de dados..."}
+{"timestamp":"2025-09-19T21:54:18.881Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T21:54:18.881Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T21:54:18.882Z","level":"INFO","message":"🔄 Executando migrações..."}
+{"timestamp":"2025-09-19T21:54:18.908Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:54:18.909Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:54:18.912Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T21:54:18.913Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T21:54:18.914Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T21:54:18.915Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T21:54:18.915Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T21:54:18.916Z","level":"INFO","message":"📋 Endpoints disponíveis:"}
+{"timestamp":"2025-09-19T21:54:18.916Z","level":"INFO","message":"   GET  /health"}
+{"timestamp":"2025-09-19T21:54:18.917Z","level":"INFO","message":"   GET  /api/v1/test"}
+{"timestamp":"2025-09-19T21:54:18.918Z","level":"INFO","message":"   POST /api/v1/auth/register"}
+{"timestamp":"2025-09-19T21:54:18.918Z","level":"INFO","message":"   POST /api/v1/auth/login"}
+{"timestamp":"2025-09-19T21:54:18.919Z","level":"INFO","message":"   GET  /api/v1/trading/symbols"}
+{"timestamp":"2025-09-19T21:54:18.919Z","level":"INFO","message":"   GET  /api/v1/ai/status"}
+{"timestamp":"2025-09-19T21:54:18.919Z","level":"INFO","message":"   GET  /api/v1/subscriptions/plans"}
+{"timestamp":"2025-09-19T21:59:06.187Z","level":"INFO","message":"✅ Rotas de autenticação carregadas"}
+{"timestamp":"2025-09-19T21:59:06.196Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T21:59:06.201Z","level":"INFO","message":"✅ Rotas de trading carregadas"}
+{"timestamp":"2025-09-19T21:59:06.208Z","level":"INFO","message":"✅ Rotas de IA carregadas"}
+{"timestamp":"2025-09-19T21:59:06.306Z","level":"INFO","message":"✅ Rotas de assinaturas carregadas"}
+{"timestamp":"2025-09-19T21:59:06.307Z","level":"INFO","message":"🔄 Tentando conectar ao banco de dados..."}
+{"timestamp":"2025-09-19T21:59:06.358Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T21:59:06.359Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T21:59:06.359Z","level":"INFO","message":"🔄 Executando migrações..."}
+{"timestamp":"2025-09-19T21:59:06.381Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:59:06.383Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:59:06.387Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T21:59:06.388Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T21:59:06.389Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T21:59:06.389Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T21:59:06.390Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T21:59:06.390Z","level":"INFO","message":"📋 Endpoints disponíveis:"}
+{"timestamp":"2025-09-19T21:59:06.391Z","level":"INFO","message":"   GET  /health"}
+{"timestamp":"2025-09-19T21:59:06.391Z","level":"INFO","message":"   GET  /api/v1/test"}
+{"timestamp":"2025-09-19T21:59:06.392Z","level":"INFO","message":"   POST /api/v1/auth/register"}
+{"timestamp":"2025-09-19T21:59:06.393Z","level":"INFO","message":"   POST /api/v1/auth/login"}
+{"timestamp":"2025-09-19T21:59:06.393Z","level":"INFO","message":"   GET  /api/v1/trading/symbols"}
+{"timestamp":"2025-09-19T21:59:06.394Z","level":"INFO","message":"   GET  /api/v1/ai/status"}
+{"timestamp":"2025-09-19T21:59:06.394Z","level":"INFO","message":"   GET  /api/v1/subscriptions/plans"}
+{"timestamp":"2025-09-19T21:59:20.676Z","level":"INFO","message":"✅ Rotas de autenticação carregadas"}
+{"timestamp":"2025-09-19T21:59:20.682Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T21:59:20.686Z","level":"INFO","message":"✅ Rotas de trading carregadas"}
+{"timestamp":"2025-09-19T21:59:20.695Z","level":"INFO","message":"✅ Rotas de IA carregadas"}
+{"timestamp":"2025-09-19T21:59:20.755Z","level":"INFO","message":"✅ Rotas de assinaturas carregadas"}
+{"timestamp":"2025-09-19T21:59:20.757Z","level":"INFO","message":"🔄 Tentando conectar ao banco de dados..."}
+{"timestamp":"2025-09-19T21:59:20.796Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T21:59:20.797Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T21:59:20.798Z","level":"INFO","message":"🔄 Executando migrações..."}
+{"timestamp":"2025-09-19T21:59:20.817Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:59:20.818Z","level":"INFO","message":"✅ Migrações executadas com sucesso"}
+{"timestamp":"2025-09-19T21:59:20.821Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T21:59:20.822Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T21:59:20.822Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T21:59:20.823Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T21:59:20.823Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T21:59:20.824Z","level":"INFO","message":"📋 Endpoints disponíveis:"}
+{"timestamp":"2025-09-19T21:59:20.824Z","level":"INFO","message":"   GET  /health"}
+{"timestamp":"2025-09-19T21:59:20.825Z","level":"INFO","message":"   GET  /api/v1/test"}
+{"timestamp":"2025-09-19T21:59:20.825Z","level":"INFO","message":"   POST /api/v1/auth/register"}
+{"timestamp":"2025-09-19T21:59:20.826Z","level":"INFO","message":"   POST /api/v1/auth/login"}
+{"timestamp":"2025-09-19T21:59:20.827Z","level":"INFO","message":"   GET  /api/v1/trading/symbols"}
+{"timestamp":"2025-09-19T21:59:20.828Z","level":"INFO","message":"   GET  /api/v1/ai/status"}
+{"timestamp":"2025-09-19T21:59:20.829Z","level":"INFO","message":"   GET  /api/v1/subscriptions/plans"}
+{"timestamp":"2025-09-19T21:59:33.991Z","level":"INFO","message":"🔄 Iniciando desligamento gracioso..."}
+{"timestamp":"2025-09-19T22:17:16.210Z","level":"WARN","message":"⚠️ Usando versão simplificada da integração Deriv"}
+{"timestamp":"2025-09-19T22:23:16.049Z","level":"INFO","message":"✅ Rotas de auth carregadas"}
+{"timestamp":"2025-09-19T22:23:16.054Z","level":"INFO","message":"✅ Rotas de usuários carregadas"}
+{"timestamp":"2025-09-19T22:23:16.114Z","level":"INFO","message":"✅ Pool de conexões MySQL criado com sucesso"}
+{"timestamp":"2025-09-19T22:23:16.115Z","level":"INFO","message":"✅ Conectado ao banco MySQL"}
+{"timestamp":"2025-09-19T22:23:16.118Z","level":"INFO","message":"🚀 Servidor ForexAI Trading iniciado na porta 5000"}
+{"timestamp":"2025-09-19T22:23:16.119Z","level":"INFO","message":"📊 API disponível em: http://localhost:5000/api/v1"}
+{"timestamp":"2025-09-19T22:23:16.119Z","level":"INFO","message":"🏥 Health check: http://localhost:5000/health"}
+{"timestamp":"2025-09-19T22:23:16.120Z","level":"INFO","message":"🧪 Teste: http://localhost:5000/api/v1/test"}
+{"timestamp":"2025-09-19T22:23:16.121Z","level":"INFO","message":"🌐 Ambiente: development"}
+{"timestamp":"2025-09-19T22:24:22.061Z","level":"INFO","message":"GET /api/v1/trading/symbols - ::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T22:24:43.232Z","level":"INFO","message":"GET /api/v1/ai/status - ::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T22:24:55.573Z","level":"INFO","message":"GET /health - ::ffff:127.0.0.1"}
+{"timestamp":"2025-09-19T22:24:58.830Z","level":"INFO","message":"GET /health - ::ffff:127.0.0.1"}

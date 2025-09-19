@@ -1,0 +1,705 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-09-19T21:30:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_health_check",
+      "parentId": "fld_basic",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/health",
+      "name": "Health Check",
+      "description": "Verificar se a API está funcionando",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1695156600000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_test_api",
+      "parentId": "fld_basic",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/test",
+      "name": "Test API",
+      "description": "Teste básico da API",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1695156500000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_register",
+      "parentId": "fld_auth",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/auth/register",
+      "name": "Registrar Usuário",
+      "description": "Criar nova conta de usuário",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"João Silva\",\n  \"email\": \"joao@teste.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695156400000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_login",
+      "parentId": "fld_auth",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/auth/login",
+      "name": "Login",
+      "description": "Fazer login e obter token JWT",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"admin@forexai.com\",\n  \"password\": \"admin123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695156300000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_verify_token",
+      "parentId": "fld_auth",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/auth/verify-token",
+      "name": "Verificar Token",
+      "description": "Verificar se token JWT é válido",
+      "method": "POST",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695156200000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_user_profile",
+      "parentId": "fld_users",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/users/profile",
+      "name": "Perfil do Usuário",
+      "description": "Obter perfil completo do usuário",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695156100000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_profile",
+      "parentId": "fld_users",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/users/profile",
+      "name": "Atualizar Perfil",
+      "description": "Atualizar dados do perfil",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"João Silva Santos\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695156000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_trading_settings",
+      "parentId": "fld_users",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/users/trading-settings",
+      "name": "Atualizar Configurações Trading",
+      "description": "Configurar parâmetros de trading",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"broker\": \"deriv\",\n  \"entry_amount\": 50.00,\n  \"stop_loss_percent\": 2.0,\n  \"take_profit_percent\": 4.0,\n  \"ai_aggressiveness\": \"moderate\",\n  \"trading_active\": true,\n  \"ai_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155900000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_trading_stats",
+      "parentId": "fld_users",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/users/trading-stats",
+      "name": "Estatísticas de Trading",
+      "description": "Obter estatísticas detalhadas",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "period",
+          "value": "30d"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155800000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_trading_symbols",
+      "parentId": "fld_trading",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/trading/symbols",
+      "name": "Lista de Símbolos",
+      "description": "Obter símbolos disponíveis para trading",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1695155700000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_trade",
+      "parentId": "fld_trading",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/trading/create-trade",
+      "name": "Criar Trade",
+      "description": "Criar nova operação de trading",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"symbol\": \"EURUSD\",\n  \"type\": \"buy\",\n  \"amount\": 100.00,\n  \"stop_loss\": 1.0800,\n  \"take_profit\": 1.0900,\n  \"is_demo\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155600000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_active_positions",
+      "parentId": "fld_trading",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/trading/active-positions",
+      "name": "Posições Ativas",
+      "description": "Obter todas as posições ativas",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155500000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_close_trade",
+      "parentId": "fld_trading",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/trading/close-trade",
+      "name": "Fechar Trade",
+      "description": "Fechar uma posição ativa",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"trade_id\": \"TRD_1695156600000_abc123\",\n  \"exit_price\": 1.0875\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155400000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_trading_history",
+      "parentId": "fld_trading",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/trading/history",
+      "name": "Histórico de Trades",
+      "description": "Obter histórico de operações",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "page",
+          "value": "1"
+        },
+        {
+          "name": "limit",
+          "value": "20"
+        },
+        {
+          "name": "status",
+          "value": "closed"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155300000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_market_data",
+      "parentId": "fld_trading",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/trading/market-data/EURUSD",
+      "name": "Dados de Mercado",
+      "description": "Obter dados de velas para um símbolo",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "timeframe",
+          "value": "5m"
+        },
+        {
+          "name": "limit",
+          "value": "100"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155200000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_status",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/status",
+      "name": "Status da IA",
+      "description": "Verificar status da inteligência artificial",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1695155100000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_analyze",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/analyze",
+      "name": "Analisar Mercado",
+      "description": "Solicitar análise da IA para um símbolo",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"symbol\": \"EURUSD\",\n  \"timeframe\": \"5m\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695155000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_recommendations",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/recommendations",
+      "name": "Recomendações da IA",
+      "description": "Obter recomendações para múltiplos símbolos",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "symbols",
+          "value": "EURUSD,GBPUSD,USDJPY"
+        },
+        {
+          "name": "timeframe",
+          "value": "5m"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695154900000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_performance",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/performance",
+      "name": "Performance da IA",
+      "description": "Obter estatísticas de performance da IA",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "period",
+          "value": "30d"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695154800000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_settings_get",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/settings",
+      "name": "Obter Configurações IA",
+      "description": "Obter configurações atuais da IA",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695154700000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_settings_update",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/settings",
+      "name": "Atualizar Configurações IA",
+      "description": "Atualizar configurações avançadas da IA",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"confidence_threshold\": 0.80,\n  \"risk_level\": \"medium\",\n  \"max_daily_trades\": 25,\n  \"auto_trading_enabled\": true,\n  \"indicators_weights\": {\n    \"rsi_weight\": 0.3,\n    \"macd_weight\": 0.3,\n    \"bb_weight\": 0.2,\n    \"trend_weight\": 0.2\n  }\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695154600000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_ai_auto_trade",
+      "parentId": "fld_ai",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/ai/auto-trade",
+      "name": "Ativar/Desativar Auto Trading",
+      "description": "Controlar trading automático",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"enabled\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695154500000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_subscription_plans",
+      "parentId": "fld_subscriptions",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/subscriptions/plans",
+      "name": "Planos Disponíveis",
+      "description": "Listar todos os planos de assinatura",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1695154400000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_subscription_current",
+      "parentId": "fld_subscriptions",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "url": "{{ _.baseUrl }}/api/v1/subscriptions/current",
+      "name": "Assinatura Atual",
+      "description": "Obter detalhes da assinatura atual",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1695154300000,
+      "_type": "request"
+    },
+    {
+      "_id": "env_base",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "ForexAI Environment",
+      "data": {
+        "baseUrl": "http://localhost:5000",
+        "token": ""
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "token"
+        ]
+      },
+      "color": "#7d69cb",
+      "isPrivate": false,
+      "metaSortKey": 1695156600000,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_base",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_base",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "fileName": "ForexAI Trading API",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "wrk_base",
+      "parentId": null,
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "ForexAI Trading API",
+      "description": "API completa para sistema de trading FOREX com IA",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "fld_basic",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "🏥 Basic",
+      "description": "Endpoints básicos para teste",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1695156600000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_auth",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "🔐 Authentication",
+      "description": "Endpoints de autenticação",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1695156500000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_users",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "👤 Users",
+      "description": "Gerenciamento de usuários",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1695156400000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_trading",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "💹 Trading",
+      "description": "Operações de trading",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1695156300000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_ai",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "🤖 AI",
+      "description": "Inteligência Artificial",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1695156200000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_subscriptions",
+      "parentId": "wrk_base",
+      "modified": 1695156600000,
+      "created": 1695156600000,
+      "name": "💳 Subscriptions",
+      "description": "Sistema SaaS",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1695156100000,
+      "_type": "request_group"
+    }
+  ]
+}
